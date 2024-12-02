@@ -37,7 +37,8 @@
       },
       "rpm": {
         "compression": {
-          "type": "none"
+          "type": "gzip",
+          "level": 3
         }
       }
     },
