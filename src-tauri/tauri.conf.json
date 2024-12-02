@@ -31,6 +31,16 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ],
+    "linux": {
+      "deb": {
+        "depends": []
+      },
+      "rpm": {
+        "compression": {
+          "type": "none"
+        }
+      }
+    },
     "targets": ["deb", "rpm", "msi", "app"],
     "resources": {
       "res/first.db": "resources/first.db",
