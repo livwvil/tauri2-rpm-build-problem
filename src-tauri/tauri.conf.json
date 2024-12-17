@@ -37,18 +37,17 @@
       },
       "rpm": {
         "compression": {
-          "type": "gzip",
-          "level": 3
+          "type": "none"
         }
       }
     },
     "targets": ["deb", "rpm", "msi", "app"],
     "resources": {
-      "res/first.db": "resources/first.db",
-      "res/second.bin": "resources/second.bin",
-      "res/third.db": "resources/third.db",
-      "res/fourth.db": "resources/fourth.db"
+      "res/resources/first.db": "resources/first.db",
+      "res/resources/second.bin": "resources/second.bin",
+      "res/resources/third.db": "resources/third.db",
+      "res/resources/fourth.db": "resources/fourth.db"
     },
-    "externalBin": ["res/app"]
+    "externalBin": ["res/sidecars/app"]
   }
 }

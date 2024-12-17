@@ -9,7 +9,8 @@ try {
   rmSync("./src-tauri/res/", { recursive: true }, (_) => {});
 } catch {}
 
-mkdirSync("./src-tauri/res/", { recursive: true });
+mkdirSync("./src-tauri/res/sidecars", { recursive: true });
+mkdirSync("./src-tauri/res/resources", { recursive: true });
 
 async function generateCompressibleBinaryFile(filename, sizeInMB) {
   const fileBuffer = Buffer.alloc(Math.round(sizeInMB * 1024 * 1024));
@@ -25,19 +26,33 @@ async function generateCompressibleBinaryFile(filename, sizeInMB) {
 }
 
 (async () => {
-  await generateCompressibleBinaryFile("./src-tauri/res/first.db", 680);
+  await generateCompressibleBinaryFile(
+    "./src-tauri/res/resources/first.db",
+    25
+    // 680
+  );
 })();
 
 (async () => {
-  await generateCompressibleBinaryFile("./src-tauri/res/second.bin", 0.2);
+  await generateCompressibleBinaryFile(
+    "./src-tauri/res/resources/second.bin",
+    0.2
+  );
 })();
 
 (async () => {
-  await generateCompressibleBinaryFile("./src-tauri/res/third.db", 650);
+  await generateCompressibleBinaryFile(
+    "./src-tauri/res/resources/third.db",
+    13
+    // 650
+  );
 })();
 
 (async () => {
-  await generateCompressibleBinaryFile("./src-tauri/res/fourth.db", 0.15);
+  await generateCompressibleBinaryFile(
+    "./src-tauri/res/resources/fourth.db",
+    0.15
+  );
 })();
 
 const getTargetTriple = async () => {
@@ -57,5 +72,5 @@ const getTargetTriple = async () => {
   const name = "app";
   const ext = process.platform === "win32" ? ".exe" : "";
   const appName = `${name}-${targetTriple}${ext}`;
-  await fs.writeFile(`./src-tauri/res/${appName}`, buf, "binary");
+  await fs.writeFile(`./src-tauri/res/sidecars/${appName}`, buf, "binary");
 })();
